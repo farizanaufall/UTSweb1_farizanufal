@@ -46,6 +46,7 @@ foreach ($beli as $key => $barang) {
     echo $barang . " x " . $jumlah[$key] . " = Rp " . number_format($total[$key], 0, ',', '.') . "\n";
     
 }
+echo "-----------------------\n";
 echo "Total Belanja : Rp " . number_format($grandtotal, 0, ',', '.') . "\n";
 echo "</pre>"; 
 ?>
