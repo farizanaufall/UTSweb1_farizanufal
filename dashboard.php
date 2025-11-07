@@ -39,3 +39,13 @@ for ($i = 0; $i < $jumlah_item; $i++) {
     <a href="logout.php"><button>Logout</button></a>
 </body>
 </html>
+
+<?php
+echo "<pre>";  
+foreach ($beli as $key => $barang) {
+    echo $barang . " x " . $jumlah[$key] . " = Rp " . number_format($total[$key], 0, ',', '.') . "\n";
+    
+}
+echo "Total Belanja : Rp " . number_format($grandtotal, 0, ',', '.') . "\n";
+echo "</pre>"; 
+?>
