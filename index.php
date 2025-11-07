@@ -1,3 +1,27 @@
+<?php
+session_start();
+
+if( isset($_SESSION['username']) ) {
+    header("Location: dashboard.php");
+    exit;
+}
+
+if( $_SERVER['REQUEST_METHOD'] == 'POST' ) {
+    $username = $_POST['username'] ?? '';
+    $password = $_POST['password'] ?? '';
+
+    if( $username == 'farizanaufal' && $password == '24m12' ) {
+        $_SESSION['username'] = $username;
+        header("Location: dashboard.php");
+        exit;
+    }
+    else {
+        $error = "username atau password anda salah";
+    }
+
+}
+
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -19,7 +43,7 @@
         }
 
         .login-container {
-            background: #fff;
+            background: #ffffffff;
             padding: 40px 50px;
             border-radius: 15px;
             box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
@@ -29,7 +53,7 @@
 
         h2 {
             margin-bottom: 25px;
-            color: #333;
+            color: #000000ff;
         }
 
         input[type="text"],
@@ -52,7 +76,7 @@
         button {
             width: 95%;
             padding: 10px;
-            background: #2575fc;
+            background: #000000ff;
             color: white;
             border: none;
             border-radius: 8px;
@@ -62,16 +86,38 @@
         }
 
         button:hover {
-            background: #e6e6e6ff;
+            background: #c6c6c6ff;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .footer {
+            margin-top: 15px;
+            font-size: 13px;
+            color: #777;
+        }
+
+        .footer a {
+            color: #2575fc;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
     <div class="login-container">
         <h2>Login</h2>
+        <?php if(isset($error)) { echo "<p class='error'>$error</p>"; } ?>
         <form action="" method="post">
-            <input type="text" name="username" placeholder="Masukkan username" required><br>
-            <input type="password" name="password" placeholder="Masukkan password" required><br>
+            <input type="text" name="username" placeholder="username" required><br>
+            <input type="password" name="password" placeholder="password" required><br>
             <button type="submit">Login</button>
         </form>
     </div>
