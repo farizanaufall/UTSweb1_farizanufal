@@ -2,18 +2,25 @@
 session_start();
 
 if (!isset($_SESSION['username'])) {
-    header("Location: login.php");
-    exit;
+    header("Location: index.php");
+    exit();
 }
+
+$kode_barang = ["BRG001", "BRG002", "BRG003", "BRG004", "BRG005"];
+$nama_barang = ["Beras", "Gula", "popmie", "aqua", "Kopi"];
+$harga_barang = [15000, 12000, 11000, 5000, 8000];
+
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Dashboard</title>
+    <meta charset="UTF-8">
+    <title>Dashboard Penjualan</title>
 </head>
 <body>
-    <h2>Selamat datang, <?php echo $_SESSION['username']; ?>!</h2>
-    <a href="logout.php">Logout</a>
+    <h1>--POLGAN MART--</h1>
+    <p>Selamat datang, <?php echo $_SESSION['username']; ?>!</p>
+    <a href="logout.php"><button>Logout</button></a>
 </body>
 </html>
